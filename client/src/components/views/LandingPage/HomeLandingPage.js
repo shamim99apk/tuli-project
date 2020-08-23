@@ -32,6 +32,11 @@ function HomeLandingPage() {
             </a>
           </div>
           <div className='box'>
+            <a href='/hotel'>
+              <h2>Hotel</h2>
+            </a>
+          </div>
+          <div className='box'>
             <a href='/police'>
               {" "}
               <h2>Police</h2>
