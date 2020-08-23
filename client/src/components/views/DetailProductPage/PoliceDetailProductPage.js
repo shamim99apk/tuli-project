@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Row, Col } from "antd";
 import ProductImagePolice from "./Sections/ProductImagePolice";
 import ProductInfoPolice from "./Sections/ProductInfoPolice";
+import Map from "../../map/Map";
 
 function PoliceDetailProductPage(props) {
   const policeId = props.match.params.policeId;
@@ -32,6 +33,9 @@ function PoliceDetailProductPage(props) {
           <ProductInfoPolice detail={Police} />
         </Col>
       </Row>
+      <div>
+        <Map />
+      </div>
     </div>
   );
 }

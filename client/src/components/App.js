@@ -14,12 +14,18 @@ import HomeLandingPage from "./views/LandingPage/HomeLandingPage";
 import GroceryDetailProductPage from "./views/DetailProductPage/GroceryDetailProductPage";
 import BloodLandingPage from "./views/LandingPage/BloodLandingPage";
 import BloodDetailPage from "./views/DetailProductPage/BloodDetailPage";
+import HotelDetailProductPage from "./views/DetailProductPage/HotelDetailProductPage";
+
 //////
 
 import VolunteerLandingPage from "./views/LandingPage/VolunteerLandingPage";
+import HotelLandingPage from "./views/LandingPage/HotelLandingPage";
+
 import PoliceLandingPage from "./views/LandingPage/PoliceLandingPage";
 //upload
 import VolunteerUploadProductPage from "./views/UploadProductPage/VolunteerUploadProductPage";
+import HotelUploadProductPage from "./views/UploadProductPage/HotelUploadProductPage";
+
 import PoliceUploadProductPage from "./views/UploadProductPage/PoliceUploadProductPage";
 //detail
 import PoliceDetailPage from "./views/DetailProductPage/PoliceDetailProductPage";
@@ -40,6 +46,7 @@ function App() {
             path='/grocery'
             component={Auth(GroceryLandingPage, null)}
           />
+          <Route exact path='/hotel' component={Auth(HotelLandingPage, null)} />
           <Route exact path='/blood' component={Auth(BloodLandingPage, null)} />
           <Route
             exact
@@ -56,6 +63,11 @@ function App() {
             exact
             path='/groceryRoute/:groceryId'
             component={Auth(GroceryDetailProductPage, null)}
+          />
+          <Route
+            exact
+            path='/hotelRoute/:hotelId'
+            component={Auth(HotelDetailProductPage, null)}
           />
           <Route
             exact
@@ -77,6 +89,11 @@ function App() {
             exact
             path='/blood/bloodUpload'
             component={Auth(BloodUploadProductPage, true)}
+          />
+          <Route
+            exact
+            path='/hotel/hotelUpload'
+            component={Auth(HotelUploadProductPage, true)}
           />
           <Route
             exact

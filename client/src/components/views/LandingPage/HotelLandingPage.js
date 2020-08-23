@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
-
 import Icon from "@ant-design/icons";
-import "./VolunteerLanding.scss";
+import "./HotelLandingPage.scss";
 const { Meta } = Card;
 
-function VolunteerLandingPage() {
-  const [Volunteers, setVolunteers] = useState([]);
+function HotelLandingPage() {
+  const [Hotels, setHotels] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(8);
   const [PostSize, setPostSize] = useState();
@@ -20,24 +19,22 @@ function VolunteerLandingPage() {
       limit: Limit,
     };
 
-    getVolunteers(variables);
+    getHotels(variables);
   }, []);
 
-  const getVolunteers = (variables) => {
-    Axios.post("/api/volunteerRoute/getVolunteer", variables).then(
-      (response) => {
-        if (response.data.success) {
-          if (variables.loadMore) {
-            setVolunteers([...Volunteers, ...response.data.volunteers]);
-          } else {
-            setVolunteers(response.data.volunteers);
-          }
-          setPostSize(response.data.postSize);
+  const getHotels = (variables) => {
+    Axios.post("/api/hotelRoute/getHotel", variables).then((response) => {
+      if (response.data.success) {
+        if (variables.loadMore) {
+          setHotels([...Hotels, ...response.data.hotels]);
         } else {
-          alert("Failed to fectch volunteers datas");
+          setHotels(response.data.hotels);
         }
+        setPostSize(response.data.postSize);
+      } else {
+        alert("Failed to fectch Hotels datas");
       }
-    );
+    });
   };
 
   const onLoadMore = () => {
@@ -48,22 +45,22 @@ function VolunteerLandingPage() {
       limit: Limit,
       loadMore: true,
     };
-    getVolunteers(variables);
+    getHotels(variables);
     setSkip(skip);
   };
 
-  const renderCards = Volunteers.map((volunteer, index) => {
+  const renderCards = Hotels.map((hotel, index) => {
     return (
       <Col lg={6} md={8} xs={24}>
         <Card
           hoverable={true}
           cover={
-            <a href={`/volunteerRoute/${volunteer._id}`}>
+            <a href={`/hotelRoute/${hotel._id}`}>
               {" "}
-              <ImageSlider images={volunteer.images} />
+              <ImageSlider images={hotel.images} />
             </a>
           }>
-          <Meta title={volunteer.firstName}></Meta>
+          <Meta title={hotel.firstName}></Meta>
         </Card>
       </Col>
     );
@@ -76,7 +73,7 @@ function VolunteerLandingPage() {
           <div className='hero-content3'>
             <div>
               <button className='button3'>
-                <a href='/volunteer/volunteerUpload'>Want To Be a Volunteer?</a>
+                <a href='/hotel/hotelUpload'>Hotel info</a>
               </button>
             </div>
           </div>
@@ -87,15 +84,15 @@ function VolunteerLandingPage() {
         <div style={{ textAlign: "center" }}>
           <h2>
             {" "}
-            Volunteer list <Icon type='rocket' />{" "}
+            Hotel list <Icon type='rocket' />{" "}
           </h2>
           <div>
             <button>
-              <a href='/volunteer/volunteerUpload'>upload</a>
+              <a href='/hotel/hotelUpload'>upload</a>
             </button>
           </div>
         </div>
-        {Volunteers.length === 0 ? (
+        {Hotels.length === 0 ? (
           <div
             style={{
               display: "flex",
@@ -121,4 +118,4 @@ function VolunteerLandingPage() {
   );
 }
 
-export default VolunteerLandingPage;
+export default HotelLandingPage;

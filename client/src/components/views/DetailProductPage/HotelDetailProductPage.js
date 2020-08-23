@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Row, Col } from "antd";
-import ProductImageblood from "./Sections/ProductImageBlood";
-import ProductInfoblood from "./Sections/ProductInfoBlood";
+import ProductImageHotel from "./Sections/ProductImageHotel";
+import ProductInfoHotel from "./Sections/ProductInfoHotel";
 import Map from "../../map/Map";
 
-function DetailProductPage(props) {
-  const bloodId = props.match.params.bloodId;
-  const [Blood, setBlood] = useState([]);
+function HotelDetailProductPage(props) {
+  const hotelId = props.match.params.hotelId;
+  const [Hotel, setHotel] = useState([]);
 
   useEffect(() => {
-    Axios.get(`/api/bloodRoute/bloods_by_id?id=${bloodId}&type=single`).then(
+    Axios.get(`/api/hotelRoute/hotels_by_id?id=${hotelId}&type=single`).then(
       (response) => {
-        setBlood(response.data[0]);
+        setHotel(response.data[0]);
       }
     );
   }, []);
@@ -20,17 +20,17 @@ function DetailProductPage(props) {
   return (
     <div className='postPage' style={{ width: "100%", padding: "3rem 4rem" }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1>{Blood.FirstName}</h1>
+        <h1>{Hotel.title}</h1>
       </div>
 
       <br />
 
       <Row gutter={[16, 16]}>
         <Col lg={12} xs={24}>
-          <ProductImageblood detail={Blood} />
+          <ProductImageHotel detail={Hotel} />
         </Col>
         <Col lg={12} xs={24}>
-          <ProductInfoblood detail={Blood} />
+          <ProductInfoHotel detail={Hotel} />
         </Col>
       </Row>
       <div>
@@ -40,4 +40,4 @@ function DetailProductPage(props) {
   );
 }
 
-export default DetailProductPage;
+export default HotelDetailProductPage;

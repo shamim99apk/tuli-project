@@ -40,12 +40,16 @@ app.use("/api/groceryRoute", require("./routes/groceryRoute"));
 app.use("/api/bloodRoute", require("./routes/bloodRoute"));
 app.use("/api/volunteerRoute", require("./routes/volunteerRoute"));
 app.use("/api/policeRoute", require("./routes/policeRoute"));
+app.use("/api/hotelRoute", require("./routes/hotelRoute"));
 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
 app.use("/groceryUpload", express.static("groceryUpload"));
 app.use("/bloodUpload", express.static("bloodUpload"));
+app.use("/hotelUpload", express.static("hotelUpload"));
+
 app.use("/volunteerUpload", express.static("volunteerUpload"));
+
 app.use("/policeinfoupload", express.static("policeinfoupload"));
 
 // Serve static assets if in production
