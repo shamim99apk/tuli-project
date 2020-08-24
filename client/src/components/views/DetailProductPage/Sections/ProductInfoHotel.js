@@ -11,7 +11,12 @@ function ProductInfoHotel(props) {
   return (
     <div>
       <Descriptions title='Police  info'>
-        <Descriptions.Item label='Title'> {Hotel.title}</Descriptions.Item>
+        <div>
+          <Descriptions.Item label='Link'>
+            {Hotel.link ? <a href={Hotel.link}>{Hotel.link}</a> : ""}
+          </Descriptions.Item>
+        </div>
+
         <Descriptions.Item label='Email'>{Hotel.email}</Descriptions.Item>
         <Descriptions.Item label='Name'>{Hotel.name}</Descriptions.Item>
       </Descriptions>

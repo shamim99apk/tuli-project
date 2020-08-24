@@ -3,7 +3,8 @@ import Axios from "axios";
 import { Row, Col } from "antd";
 import ProductImageVolunteer from "./Sections/ProductImageVolunteer";
 import ProductInfoVolunteer from "./Sections/ProductInfoVolunteer";
-import Map from "../../map/Map";
+// import Map from "../../map/Map";
+import GoogleMap from "../../google-map/google-map.volenteer";
 
 function VolunteerDetailProductPage(props) {
   const volunteerId = props.match.params.volunteerId;
@@ -34,7 +35,8 @@ function VolunteerDetailProductPage(props) {
         </Col>
       </Row>
       <div>
-        <Map />
+        <GoogleMap />
+        {/* <Map /> */}
       </div>
     </div>
   );

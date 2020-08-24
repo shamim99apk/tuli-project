@@ -10,6 +10,7 @@ const { TextArea } = Input;
 function HotelUploadProductPage(props) {
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
+  const [Link, setLink] = useState("");
 
   const [Images, setImages] = useState([]);
 
@@ -19,6 +20,9 @@ function HotelUploadProductPage(props) {
   const onEmail = (event) => {
     setEmail(event.currentTarget.value);
   };
+  const onLink = (event) => {
+    setLink(event.currentTarget.value);
+  };
 
   const updateImages = (newImages) => {
     setImages(newImages);
@@ -26,9 +30,9 @@ function HotelUploadProductPage(props) {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    if (!Email || !Name || !Images) {
-      return alert("fill all the fields first!");
-    }
+    // if (!Email || !Name || !Images ) {
+    //   return alert("fill all the fields first!");
+    // }
 
     const variables = {
       writer: props.user.userData._id,
@@ -37,6 +41,7 @@ function HotelUploadProductPage(props) {
 
       images: Images,
       name: Name,
+      link: Link,
     };
 
     Axios.post("/api/hotelRoute/uploadHotel", variables).then((response) => {
@@ -69,6 +74,10 @@ function HotelUploadProductPage(props) {
         <label>Email</label>
         <input onChange={onEmail} value={Email} />
         <br />
+
+        <label>Link</label>
+        <input onChange={onLink} value={Link} />
+
         <br />
 
         <Button onClick={onSubmit}>Submit</Button>

@@ -3,6 +3,11 @@ import ImageGallery from "react-image-gallery";
 
 function ProductImageHotel(props) {
   const [Images, setImages] = useState([]);
+  const [Hotel, setHotel] = useState({});
+
+  useEffect(() => {
+    setHotel(props.detail);
+  }, [props.detail]);
 
   useEffect(() => {
     if (props.detail.images && props.detail.images.length > 0) {
@@ -20,7 +25,9 @@ function ProductImageHotel(props) {
 
   return (
     <div>
-      <ImageGallery items={Images} />
+      <a href={Hotel.link}>
+        <ImageGallery items={Images} />
+      </a>
     </div>
   );
 }

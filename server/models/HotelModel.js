@@ -15,7 +15,7 @@ const hotelSchema = mongoose.Schema(
     name: {
       type: String,
     },
-    title: {
+    link: {
       type: String,
     },
 
