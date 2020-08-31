@@ -5,7 +5,7 @@ import FileUploadHotel from "../../utils/FileUploadHotel";
 import Axios from "axios";
 
 const { Title } = Typography;
-const { TextArea } = Input;
+// const { TextArea } = Input;
 
 function HotelUploadProductPage(props) {
   const [Name, setName] = useState("");

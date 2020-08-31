@@ -11,11 +11,11 @@ function ProductInfoPolice(props) {
   return (
     <div>
       <Descriptions title='Police  info'>
-        <Descriptions.Item label='Full name'>
+        <Descriptions.Item label='Branch'>
           {" "}
-          {Police.firstName + Police.lastName}
+          {Police.firstName}
         </Descriptions.Item>
-        <Descriptions.Item label='Email'>{Police.email}</Descriptions.Item>
+
         <Descriptions.Item label='District'>
           {" "}
           {Police.district}
@@ -27,8 +27,6 @@ function ProductInfoPolice(props) {
         <Descriptions.Item label='Address'> {Police.address}</Descriptions.Item>
       </Descriptions>
 
-      <br />
-      <br />
       <br />
     </div>
   );

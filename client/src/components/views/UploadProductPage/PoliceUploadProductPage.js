@@ -8,8 +8,7 @@ const { TextArea } = Input;
 
 function PoliceUploadProductPage(props) {
   const [FirstName, setFirstName] = useState("");
-  const [LastName, setLastName] = useState("");
-  const [Email, setEmail] = useState("");
+
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [Address, setAddress] = useState("");
   const [District, setDistrict] = useState("");
@@ -19,9 +18,7 @@ function PoliceUploadProductPage(props) {
   const onFirstName = (event) => {
     setFirstName(event.currentTarget.value);
   };
-  const onLastName = (event) => {
-    setLastName(event.currentTarget.value);
-  };
+
   const onAddress = (event) => {
     setAddress(event.currentTarget.value);
   };
@@ -29,9 +26,6 @@ function PoliceUploadProductPage(props) {
     setPhoneNumber(event.currentTarget.value);
   };
 
-  const onEmail = (event) => {
-    setEmail(event.currentTarget.value);
-  };
   const onDistrict = (event) => {
     setDistrict(event.currentTarget.value);
   };
@@ -42,26 +36,16 @@ function PoliceUploadProductPage(props) {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    if (
-      !FirstName ||
-      !LastName ||
-      !Email ||
-      !Address ||
-      !PhoneNumber ||
-      !District ||
-      !Images
-    ) {
-      return alert("fill all the fields first!");
-    }
+    // if (!FirstName || !Address || !PhoneNumber || !District || !Images) {
+    //   return alert("fill all the fields first!");
+    // }
 
     const variables = {
       writer: props.user.userData._id,
       firstName: FirstName,
-      lastName: LastName,
 
       phoneNumber: PhoneNumber,
       address: Address,
-      email: Email,
 
       images: Images,
       district: District,
@@ -89,13 +73,10 @@ function PoliceUploadProductPage(props) {
 
         <br />
         <br />
-        <label>First name</label>
+        <label>Branch</label>
         <Input onChange={onFirstName} value={FirstName} />
         <br />
-        <br />
-        <label>Last name</label>
-        <TextArea onChange={onLastName} value={LastName} />
-        <br />
+
         <br />
         <label>Address</label>
         <Input onChange={onAddress} value={Address} />
@@ -107,13 +88,8 @@ function PoliceUploadProductPage(props) {
         <br />
         <br />
         <label>Phone number </label>
-        <input onChange={onPhoneNumber} value={PhoneNumber} type='number' />
+        <Input onChange={onPhoneNumber} value={PhoneNumber} type='number' />
 
-        <br />
-        <br />
-        <label>Email</label>
-        <input onChange={onEmail} value={Email} />
-        <br />
         <br />
 
         <Button onClick={onSubmit}>Submit</Button>

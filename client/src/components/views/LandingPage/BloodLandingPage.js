@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { Col, Card, Row } from "antd";

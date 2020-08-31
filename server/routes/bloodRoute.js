@@ -49,6 +49,50 @@ router.post("/uploadBlood", auth, (req, res) => {
     return res.status(200).json({ success: true });
   });
 });
+// router.post("/getBloods", (req, res) => {
+//   let order = req.body.order ? req.body.order : "desc";
+//   let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+//   let limit = req.body.limit ? parseInt(req.body.limit) : 100;
+//   let skip = parseInt(req.body.skip);
+
+//   let findArgs = {};
+//   let term = req.body.searchTerm;
+
+//   for (let key in req.body.filters) {
+//     if (req.body.filters[key].length > 0) {
+//       findArgs[key] = req.body.filters[key];
+//     }
+//   }
+
+//   console.log(findArgs);
+
+//   if (term) {
+//     BloodModel.find(findArgs)
+//       .find({ $text: { $search: term } })
+//       .populate("writer")
+//       .sort([[sortBy, order]])
+//       .skip(skip)
+//       .limit(limit)
+//       .exec((err, bloods) => {
+//         if (err) return res.status(400).json({ success: false, err });
+//         res
+//           .status(200)
+//           .json({ success: true, bloods, postSize: bloods.length });
+//       });
+//   } else {
+//     BloodModel.find(findArgs)
+//       .populate("writer")
+//       .sort([[sortBy, order]])
+//       .skip(skip)
+//       .limit(limit)
+//       .exec((err, bloods) => {
+//         if (err) return res.status(400).json({ success: false, err });
+//         res
+//           .status(200)
+//           .json({ success: true, bloods, postSize: bloods.length });
+//       });
+//   }
+// });
 
 router.post("/getBlood", (req, res) => {
   let order = req.body.order ? req.body.order : "desc";
@@ -68,7 +112,6 @@ router.post("/getBlood", (req, res) => {
       res.status(200).json({ success: true, bloods, postSize: bloods.length });
     });
 });
-
 //?id=${productId}&type=single
 //id=12121212,121212,1212121   type=array
 router.get("/bloods_by_id", (req, res) => {
